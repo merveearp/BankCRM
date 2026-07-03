@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="BankCRM.Business/BankCRM.Business.csproj" />
+  <Project Path="BankCRM.DataAccess/BankCRM.DataAccess.csproj" />
+  <Project Path="BankCRM.Dto/BankCRM.Dto.csproj" />
+  <Project Path="BankCRM.Entity/BankCRM.Entity.csproj" />
+  <Project Path="BankCRM.WebUI/BankCRM.WebUI.csproj" />
+</Solution>
