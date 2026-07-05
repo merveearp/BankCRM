@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BankCRM.DataAccess.Abstract
+{
+    public interface IGenericDal<T> where T: class 
+    {
+        Task<IList<T>> GetAllAsync();
+        Task<T>? GetByIdAsync(int id);
+        Task CreateAsync(T entity);
+        Task UpdateAsync(T entity);
+        Task DeleteAsync(T entity);
+
+    }
+}

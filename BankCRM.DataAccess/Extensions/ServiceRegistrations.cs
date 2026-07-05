@@ -1,4 +1,4 @@
-﻿using BankCRM.DataAccess.Context;
+﻿using BankCRM.DataAccess.Concrete.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

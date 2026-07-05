@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BankCRM.DataAccess.Context
+namespace BankCRM.DataAccess.Concrete.Context
 {
     public class BankCrmContext :DbContext
        
