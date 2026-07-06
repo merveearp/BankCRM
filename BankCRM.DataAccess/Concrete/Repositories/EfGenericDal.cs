@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace BankCRM.DataAccess.Concrete.Repositories
 {
-    public class EfGenericDal<T> : IGenericDal<T> where T : class
+    public class EFGenericDal<T> : IGenericDal<T> where T : class
     {
         private readonly BankCrmContext _context;
 
-        public EfGenericDal(BankCrmContext context)
+        public EFGenericDal(BankCrmContext context)
         {
             _context = context;
            

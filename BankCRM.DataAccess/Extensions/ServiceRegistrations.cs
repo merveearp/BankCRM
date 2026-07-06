@@ -20,6 +20,9 @@ namespace BankCRM.DataAccess.Extensions
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
 
+
+         
+
         }
       
     }
