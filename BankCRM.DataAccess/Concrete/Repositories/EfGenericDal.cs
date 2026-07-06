@@ -16,6 +16,7 @@ namespace BankCRM.DataAccess.Concrete.Repositories
         public EfGenericDal(BankCrmContext context)
         {
             _context = context;
+           
         }
 
         public async Task CreateAsync(T entity)
