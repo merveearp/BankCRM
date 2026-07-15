@@ -1,5 +1,4 @@
-﻿using BankCRM.DataAccess.Abstract;
-using BankCRM.DataAccess.Concrete.Context;
+﻿using BankCRM.DataAccess.Concrete.Context;
 using BankCRM.Entity.Entities;
 using System;
 using System.Collections.Generic;
@@ -9,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace BankCRM.DataAccess.Concrete.Repositories
 {
-    public class EfRoleDal : EfGenericRepository<Role>, IRoleDal
+    public class EfAppUserDal : EfGenericRepository<AppUser>
     {
-        public EfRoleDal(BankCrmContext context) : base(context)
+        public EfAppUserDal(BankCrmContext context) : base(context)
         {
         }
     }

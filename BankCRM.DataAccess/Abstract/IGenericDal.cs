@@ -8,7 +8,7 @@ namespace BankCRM.DataAccess.Abstract
 {
     public interface IGenericDal<T> where T: class 
     {
-        Task<IList<T>> GetAllAsync();
+        Task<List<T>> GetAllAsync();
         Task<T>? GetByIdAsync(int id);
         Task CreateAsync(T entity);
         Task UpdateAsync(T entity);

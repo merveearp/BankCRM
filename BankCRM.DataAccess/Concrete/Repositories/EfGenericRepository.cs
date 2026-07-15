@@ -31,7 +31,7 @@ namespace BankCRM.DataAccess.Concrete.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<IList<T>> GetAllAsync()
+        public async Task<List<T>> GetAllAsync()
         {
             return await _context.Set<T>().ToListAsync();
         }

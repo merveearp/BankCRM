@@ -20,7 +20,7 @@ namespace BankCRM.Entity.Entities
      
 
 
-        public Role Role { get; set; } = null!;
+        public AppRole AppRole { get; set; } = null!;
         public Branch Branch { get; set; } = null!;
         public IList<Customer> Customers { get; set; } = new List<Customer>();
         public IList<CustomerNote> CustomerNotes { get; set; } = new List<CustomerNote>();

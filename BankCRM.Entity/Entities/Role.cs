@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BankCRM.Entity.Entities
 {
-    public class Role :BaseEntity
+    public class AppRole :BaseEntity
     {
         public int Id { get; set; }
         public string Name { get; set; }
