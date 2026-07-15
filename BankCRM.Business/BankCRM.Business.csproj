@@ -12,4 +12,8 @@
     <ProjectReference Include="..\BankCRM.Entity\BankCRM.Entity.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ValidationRules\" />
+  </ItemGroup>
+
 </Project>
