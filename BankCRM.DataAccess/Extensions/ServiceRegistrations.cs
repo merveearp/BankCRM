@@ -23,7 +23,6 @@ namespace BankCRM.DataAccess.Extensions
             });
 
             services.AddScoped<ITransactionDal, EfTransactionDal>();
-            services.AddScoped<IRoleDal, EfRoleDal>();
             services.AddScoped<IProductDal, EfProductDal>();
             services.AddScoped<IProductCategoryDal, EfProductCategoryDal>();
             services.AddScoped<INotificationDal, EfNotificationDal>();

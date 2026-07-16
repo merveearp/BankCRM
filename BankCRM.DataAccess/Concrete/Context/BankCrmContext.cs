@@ -1,4 +1,5 @@
 ﻿using BankCRM.Entity.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,22 +9,20 @@ using System.Threading.Tasks;
 
 namespace BankCRM.DataAccess.Concrete.Context
 {
-    public class BankCrmContext :DbContext
+    public class BankCrmContext :IdentityDbContext<AppUser,AppRole,int>
        
     {
-        public BankCrmContext(DbContextOptions options):base(options)
+        public BankCrmContext(DbContextOptions<BankCrmContext> options):base(options)
         {
 
             
         }
 
-        public DbSet<Role> Roles { get; set; }
         public DbSet<Branch> Branches { get; set; }
         public DbSet<Currency> Currencies { get; set; }
         public DbSet<AccountType> AccountTypes { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<CustomerProduct> CustomerProducts { get; set; }
@@ -37,13 +36,31 @@ namespace BankCRM.DataAccess.Concrete.Context
         {
             base.OnModelCreating(modelBuilder);
 
-            foreach (var foreignKey in modelBuilder.Model
-        .GetEntityTypes()
-        .SelectMany(e => e.GetForeignKeys()))
-            {
-                foreignKey.DeleteBehavior = DeleteBehavior.NoAction;
-            }
+            modelBuilder.Entity<Customer>()
+                  .HasOne(x => x.AppUser)
+                  .WithMany(x => x.Customers)
+                  .HasForeignKey(x => x.AppUserId)
+                  .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Customer>()
+                    .HasOne(x => x.Branch)
+                    .WithMany(x => x.Customers)
+                    .HasForeignKey(x => x.BranchId)
+                    .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<AppUser>()
+                    .HasOne(x => x.Branch)
+                    .WithMany(x => x.AppUsers)
+                    .HasForeignKey(x => x.BranchId)
+                    .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Account>()
+                    .HasOne(x => x.Customer)
+                    .WithMany(x => x.Accounts)
+                    .HasForeignKey(x => x.CustomerId)
+                    .OnDelete(DeleteBehavior.NoAction);
         }
+
     }
 
 }
