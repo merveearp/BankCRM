@@ -12,17 +12,34 @@ builder.Services.AddRepositoriesExt(builder.Configuration);
 
 builder.Services.AddIdentity<AppUser, AppRole>(options =>
 {
-    options.Password.RequiredLength = 6;
-    options.Password.RequireUppercase = true;
-    options.Password.RequireLowercase = true;
-    options.Password.RequireDigit = true;
-    options.Password.RequireNonAlphanumeric = false;
+    ////şifre kuralları 
+    //options.Password.RequiredLength = 6;
+    //options.Password.RequireUppercase = true;
+    //options.Password.RequireLowercase = true;
+    //options.Password.RequireDigit = true;
+    //options.Password.RequireNonAlphanumeric = true;
 
+    //kullanıcı ayarları
     options.User.RequireUniqueEmail = true;
+
+    //kilitleme ayarları
+    options.Lockout.MaxFailedAccessAttempts = 5;
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15);
+    options.Lockout.AllowedForNewUsers = true;
 })
 .AddEntityFrameworkStores<BankCrmContext>()
 .AddDefaultTokenProviders();
 
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Auth/Login";
+
+    options.ExpireTimeSpan = TimeSpan.FromHours(8);
+    options.Cookie.Name = "BankCRM.Auth";
+    options.SlidingExpiration = true;
+
+
+});
 var app = builder.Build();
 
 
@@ -37,6 +54,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
